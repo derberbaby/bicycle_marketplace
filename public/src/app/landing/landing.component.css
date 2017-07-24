@@ -1,0 +1,24 @@
+
+#BOD {
+	margin: auto;
+	padding: 20px;
+	border: 1px solid black;
+	width: 350px;
+}
+
+#login, #reg {
+	width: 300px;
+	vertical-align: top;
+	display: inline-block;
+	border: 1px solid black;
+	margin: 20px;
+	padding: 20px;
+}
+
+label, p {
+	display: block;
+}
+
+img {
+	width: 200px;
+}

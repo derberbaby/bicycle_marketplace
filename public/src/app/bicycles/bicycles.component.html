@@ -1,0 +1,7 @@
+<div>
+<h1 *ngIf="user">Welcome {{ user.first_name }}</h1>
+	<a [routerLink]="['/bicycles', 'browse']">Browse</a> | 
+	<a [routerLink]="['/bicycles', 'listings']">My Listings</a> | 
+	<a (click)="logout()" [routerLink]="['/']">Log off</a>
+	<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,20 @@
+<div>
+	<div id="search">
+		
+	</div>
+	<div id="listings">
+		<div *ngFor="let bike of bicycles; index as idx">
+			<img [src]=bike.image>
+			<h3>{{ bike.title }}</h3>
+			<p>{{ bike.desc }}</p>
+			<h3>${{ bike.price }}</h3>
+			<p>{{ bike.location }}</p>
+			<button *ngIf="user._id == bike._User" (click)="deleteBike(bike)">DELETE</button>
+			<button *ngIf="user._id != bike._User" (click)="showContact(bike._User, idx)">Contact</button>
+			<div id="contact" *ngIf="show[idx] == false">
+				<p>{{ bike_owner.first_name }} {{ bike_owner.last_name }}</p>
+				<p>{{ bike_owner.email }}</p>
+			</div>
+		</div>
+	</div>
+</div>

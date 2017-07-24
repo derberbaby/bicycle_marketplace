@@ -1,0 +1,119 @@
+<div id="wrapper">
+	<div id="BOD">
+		<h2>Bike of the day!</h2>
+			<img [src]=bicycles[index].image>
+			<h2>{{ bicycles[index].title }}</h2>
+			<p>{{ bicycles[index].desc }}</p>
+			<p>{{ bicycles[index].price }}</p>
+			<p>{{ bicycles[index].location }}</p>
+	</div>
+	<div id="errors">
+		<p *ngFor="let error of errors">{{ error }}</p>
+	</div>
+	<div id="login">
+	<h3>Login</h3>
+		<form (submit)="login()" #logForm="ngForm">
+			<label for="email">Email: <input
+			type="text"
+			name="email"
+			required 
+			[(ngModel)]="user_login.email"
+			#login_email="ngModel">
+			<p *ngIf="!login_email.valid && (login_email.dirty || login_email.touched)">Email is required</p>
+			</label>
+			<label for="password">Password: <input 
+			type="text"
+			name="password"
+			required 
+			[(ngModel)]="user_login.password"
+			#login_password="ngModel">
+			<p *ngIf="!login_password.valid && (login_password.dirty || login_password.touched)">Password is required</p>
+			</label>
+			<input type="submit" [disabled]="!logForm.form.valid" value="Login">
+		</form>
+	</div>
+	<div id="reg">
+	<h3>Registration</h3>
+		<form (submit)="register()" #regForm="ngForm">
+			<label for="first_name">*First Name: 
+			<input type="text"
+			name="first_name"
+			required
+			minlength="2"
+			[(ngModel)]="user.first_name"
+			#first_name="ngModel"
+			>
+			<p *ngIf="first_name.errors?.required && (first_name.touched || first_name.dirty)">Please enter your first name.</p>
+			<p *ngIf="first_name.errors?.minlength && (first_name.touched || first_name.dirty)">Must be at least 2 characters.</p>
+			</label>
+			<label for="last_name">*Last Name: 
+			<input type="text"
+			name="last_name"
+			required
+			minlength="2"
+			[(ngModel)]="user.last_name"
+			#last_name="ngModel"
+			>
+			<p *ngIf="last_name.errors?.required && (last_name.touched || last_name.dirty)">Please enter your last name.</p>
+			<p *ngIf="last_name.errors?.minlength && (last_name.touched || last_name.dirty)">Must be at least 2 characters.</p>
+			</label>
+			<label for="username">*Username: 
+			<input type="text"
+			name="username"
+			required
+			minlength="2"
+			[(ngModel)]="user.username"
+			#username="ngModel"
+			>
+			<p *ngIf="username.errors?.required && (username.touched || username.dirty)">Please enter your last name.</p>
+			<p *ngIf="username.errors?.minlength && (username.touched || username.dirty)">Must be at least 2 characters.</p>
+			</label>
+			<label for="email">*Email: 
+			<input type="text"
+			name="email"
+			required
+			minlength="4"
+			[(ngModel)]="user.email"
+			#email="ngModel"
+			>
+			<p *ngIf="email.errors?.required && (email.touched || email.dirty)">Please enter your email.</p>
+			<p *ngIf="email.errors?.minlength && (email.touched || email.dirty)">Must be at least 4 characters.
+			</p>
+			</label>
+			<label for="password">*Password: 
+			<input type="text"
+			name="password"
+			required
+			minlength="8"
+			maxlength="32"
+			[(ngModel)]="user.password"
+			#password="ngModel"
+			>
+			<p *ngIf="password.errors?.required && (password.touched || password.dirty)">Please enter a password.</p>
+			<p *ngIf="password.errors?.minlength && (password.touched || password.dirty)">Must be at least 8 characters.</p>
+			<p *ngIf="password.errors?.maxlength && (password.touched || psasword.dirty)">Cannot be more than 32 characters.</p>
+			<p *ngIf="password.errors?.pattern && (password.touched || password.dirty)">Must include 1 lowercase, 1 uppercase, and 1 number.</p>
+			</label>
+			<label for="password_confirm">*Password Confirmation: 
+			<input type="text"
+			name="password_confirm"
+			required
+			[(ngModel)]="user.password_confirm"
+			#password_confirm="ngModel"
+			>
+			<p *ngIf="!password_confirm.valid && (password_confirm.dirty || password_confirm.touched)">Please confirm password.</p>
+			<p *ngIf="user.password != user.password_confirm && (password_confirm.dirty || password_confirm.touched)">Passwords do not match.</p>
+			</label>
+			<label for="birthday">Birthday: 
+			<input type="date"
+			name="birthday"
+			required 
+			[(ngModel)]="user.birthday"
+			#birthday="ngModel"
+			>
+			<p *ngIf="!birthday.valid && (birthday.dirty || birthday.touched)">Birthday is required</p>
+			</label>
+			<input type="submit" [disabled]="!regForm.form.valid" value="Register">
+		</form>
+	</div>
+</div>
