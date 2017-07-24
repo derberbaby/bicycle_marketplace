@@ -27,3 +27,5 @@ app.all("*", (req,res,next) => {
 app.listen(6789, () => {
     console.log("listening on port 6789");
 })
+
+// this is confusing
